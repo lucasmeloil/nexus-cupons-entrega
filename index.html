@@ -9,8 +9,7 @@
 <body>
     <div class="container">
         <header>
-            <img src="/img/logo-raymodaintima-removebg-preview (1).png" alt="Logo" class="logo"> <!-- Substitua pelo caminho da sua logo -->
-            <h1>Gerador de Cupons</h1>
+            <h1>Ray Moda Intíma</h1>
         </header>
         <form id="cupomForm">
             <div class="form-group">
@@ -46,8 +45,12 @@
                 <select id="metodoPagamento" required>
                     <option value="Cartão">Cartão</option>
                     <option value="Dinheiro">Dinheiro</option>
-                    <option value="Transferência">Transferência</option>
+                    <option value="Transferência">Pix</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="valorTotal">Valor Total (BR$):</label>
+                <input type="number" id="valorTotal" required>
             </div>
             <div class="buttons">
                 <button type="button" onclick="gerarCupom()">Gerar Cupom</button>
