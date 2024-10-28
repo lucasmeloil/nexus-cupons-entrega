@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box; /* Ajusta o box model */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Fundo claro */
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove padding padrão */
+}
+
+.container {
+    background-color: #ffffff; /* Fundo do container */
+    padding: 30px; /* Padding para o conteúdo */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra do container */
+    max-width: 1200px; /* Largura máxima para desktops */
+    margin: 50px auto; /* Centraliza com margens verticais */
+    width: 95%; /* Largura responsiva */
+    overflow: hidden; /* Esconde o conteúdo que sai do container */
+}
+
+header {
+    text-align: center; /* Centraliza conteúdo do cabeçalho */
+    margin-bottom: 30px; /* Espaçamento abaixo do cabeçalho */
+}
+
+.logo {
+    max-width: 60%; /* Largura da logo se ajusta à tela */
+    height: auto; /* Mantém proporções da logo */
+    margin-bottom: 10px; /* Espaçamento abaixo da logo */
+}
+
+h1 {
+    font-size: 2.5rem; /* Tamanho de fonte maior para o título */
+    color: #333; /* Cor do texto */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Espaçamento entre os campos */
+    text-align: left; /* Alinhamento à esquerda para labels e campos */
+}
+
+.form-group label {
+    display: block; /* Faz labels ocuparem a linha inteira */
+    margin-bottom: 6px; /* Espaçamento abaixo do label */
+    font-weight: bold; /* Texto em negrito */
+    color: #333; /* Cor do texto */
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%; /* Largura total dos campos */
+    padding: 12px; /* Padding dos campos */
+    border: 1px solid #ccc; /* Borda dos campos */
+    border-radius: 4px; /* Bordas arredondadas */
+    font-size: 1rem; /* Tamanho da fonte dos campos */
+}
+
+.buttons {
+    display: flex; /* Flexbox para botões */
+    justify-content: space-between; /* Espaço entre os botões */
+    gap: 10px; /* Espaçamento entre botões */
+}
+
+button {
+    flex: 1; /* Botões ocupam espaço igual */
+    padding: 12px; /* Padding dos botões */
+    border: none; /* Remove bordas */
+    background-color: #8B0000; /* Vermelho sangue */
+    color: #ffffff; /* Cor do texto do botão */
+    font-size: 1.1rem; /* Tamanho da fonte nos botões */
+    cursor: pointer; /* Muda cursor para pointer */
+    border-radius: 4px; /* Bordas arredondadas */
+    transition: background-color 0.3s; /* Transição suave para hover */
+}
+
+button:hover {
+    background-color: #A52A2A; /* Cor ao passar o mouse */
+}
+
+.cupom-preview {
+    margin-top: 20px; /* Espaçamento acima do cupom */
+    background-color: #ffffff; /* Fundo do cupom */
+    border: 1px dashed #333; /* Bordas do cupom */
+    padding: 15px; /* Padding do cupom */
+    font-family: "Courier New", monospace; /* Fonte monoespaçada */
+    font-size: 1rem; /* Tamanho da fonte do cupom */
+    text-align: left; /* Alinhamento à esquerda do texto do cupom */
+    color: #222; /* Cor do texto do cupom */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Reduz o tamanho do título em telas menores */
+    }
+
+    .buttons {
+        flex-direction: column; /* Empilha os botões em telas menores */
+    }
+
+    button {
+        width: 100%; /* Botões ocupam 100% em telas menores */
+        margin-top: 10px; /* Espaçamento acima do botão */
+    }
+}
+
+@media (max-width: 480px) {
+    .form-group {
+        margin-bottom: 15px; /* Menor espaçamento entre campos */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Tamanho do título em telas muito pequenas */
+    }
+
+    button {
+        font-size: 1rem; /* Reduz o tamanho da fonte dos botões */
+    }
+
+    .cupom-preview {
+        font-size: 0.9rem; /* Reduz o tamanho da fonte do cupom em telas pequenas */
+    }
+}
