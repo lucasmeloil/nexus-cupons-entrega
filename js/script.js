@@ -39,3 +39,43 @@ function gerarCupom() {
 
     document.getElementById('cupomPreview').innerHTML = cupomContent;
 }
+
+function imprimirCupom() {
+    const cupomContent = document.getElementById('cupomPreview').innerHTML;
+
+    if (!cupomContent) {
+        alert('Por favor, gere um cupom antes de tentar imprimir.');
+        return;
+    }
+
+    // Cria uma nova janela ou aba para imprimir
+    const printWindow = window.open('', '_blank', 'width=600,height=600');
+
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Impressão de Cupom</title>
+                <style>
+                    body { font-family: Arial, sans-serif; }
+                    .cupom-content { width: 80mm; margin: 0 auto; }
+                    .footer { text-align: center; margin-top: 20px; }
+                </style>
+            </head>
+            <body>
+                <div class="cupom-content">
+                    ${cupomContent}
+                </div>
+            </body>
+        </html>
+    `);
+
+    printWindow.document.close();
+
+    // Espera o conteúdo ser carregado e imprime
+    printWindow.onload = function () {
+        printWindow.print();
+        printWindow.onafterprint = function () {
+            printWindow.close();
+        };
+    };
+}
