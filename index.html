@@ -36,7 +36,7 @@
                 <label for="statusPagamento">Status do Pagamento:</label>
                 <select id="statusPagamento" required>
                     <option value="Pago">Pago</option>
-                    <option value="Pendente">Pendente</option>
+                    <option value="Receber">Receber</option>
                     <option value="Cancelado">Cancelado</option>
                 </select>
             </div>
@@ -45,7 +45,7 @@
                 <select id="metodoPagamento" required>
                     <option value="Cartão">Cartão</option>
                     <option value="Dinheiro">Dinheiro</option>
-                    <option value="Transferência">Pix</option>
+                    <option value="Pix">Pix</option>
                 </select>
             </div>
             <div class="form-group">
@@ -57,8 +57,13 @@
                 <button type="button" onclick="imprimirCupom()">Imprimir Cupom</button>
             </div>
         </form>
-        <div id="cupomPreview" class="cupom-preview"></div>
+
+        <!-- Exibição do cupom gerado -->
+        <div id="cupomPreview" class="cupom-preview">
+            <!-- O conteúdo do cupom gerado será exibido aqui -->
+        </div>
     </div>
+    
     <script src="js/script.js"></script>
 </body>
 </html>
