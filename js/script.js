@@ -1,64 +1,104 @@
 function gerarCupom() {
-    const nome = document.getElementById('nome').value;
-    const telefone = document.getElementById('telefone').value;
-    const endereco = document.getElementById('endereco').value;
-    const observacao = document.getElementById('observacao').value;
-    const data = document.getElementById('data').value;
-    const statusPagamento = document.getElementById('statusPagamento').value;
-    const metodoPagamento = document.getElementById('metodoPagamento').value;
-    const valorTotal = document.getElementById('valorTotal').value;
+  const nome = document.getElementById("nome").value;
+  const telefone = document.getElementById("telefone").value;
+  const endereco = document.getElementById("endereco").value;
+  const observacao = document.getElementById("observacao").value;
+  const data = document.getElementById("data").value;
+  const statusPagamento = document.getElementById("statusPagamento").value;
+  const metodoPagamento = document.getElementById("metodoPagamento").value;
+  const valorTotal = document.getElementById("valorTotal").value;
 
-    // Verifica se os campos obrigatórios estão preenchidos
-    if (!nome || !telefone || !endereco || !data || !statusPagamento || !metodoPagamento || !valorTotal) {
-        alert('Por favor, preencha todos os campos obrigatórios!');
-        return;
-    }
+  if (
+    !nome ||
+    !telefone ||
+    !endereco ||
+    !data ||
+    !statusPagamento ||
+    !metodoPagamento ||
+    !valorTotal
+  ) {
+    alert("Por favor, preencha todos os campos obrigatórios!");
+    return;
+  }
 
-    // Formata a data para o formato brasileiro
-    const dataFormatada = new Date(data).toLocaleDateString('pt-BR');
-    const horaAtual = new Date().toLocaleTimeString('pt-BR');
+  const [ano, mes, dia] = data.split("-");
+  const dataCorrigida = new Date(ano, mes - 1, dia);
+  const dataFormatada = dataCorrigida.toLocaleDateString("pt-BR");
 
-    // Formata o valor total para BRL
-    const valorTotalFormatado = parseFloat(valorTotal).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  const horaAtual = new Date().toLocaleTimeString("pt-BR");
 
-    const cupomContent = `
+  const valorTotalFormatado = Number.parseFloat(valorTotal).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+
+  const cupomContent = `
         <div class="cupom-content">
             <hr>
+            <div style="text-align: center;">
+                <p><strong>SUA ENTREGA CHEGOU</strong></p>
+            </div>
             <p><strong>Nome:</strong> ${nome}</p>
             <p><strong>Telefone:</strong> ${telefone}</p>
             <p><strong>Endereço:</strong> ${endereco}</p>
-            <p><strong>Observação:</strong> ${observacao}</p>
+            <p><strong>Observação:</strong> ${observacao || "Nenhuma"}</p>
             <p><strong>Status do Pagamento:</strong> ${statusPagamento}</p>
             <p><strong>Método de Pagamento:</strong> ${metodoPagamento}</p>
             <p><strong>Valor Total:</strong> ${valorTotalFormatado}</p>
             <p class="small-text">Data: ${dataFormatada} - Hora: ${horaAtual}</p>
             <hr>
-            <p class="footer">Obrigado pela preferência!</p>
+            <p class="footer" style="text-align: center;"><strong>Obrigado pela preferência!</strong></p>
         </div>
     `;
 
-    document.getElementById('cupomPreview').innerHTML = cupomContent;
+  document.getElementById("cupomPreview").innerHTML = cupomContent;
 }
 
 function imprimirCupom() {
-    const cupomContent = document.getElementById('cupomPreview').innerHTML;
+  const cupomContent = document.getElementById("cupomPreview").innerHTML;
+  const tamanhoCupom = document.getElementById("tamanhoCupom").value;
 
-    if (!cupomContent) {
-        alert('Por favor, gere um cupom antes de tentar imprimir.');
-        return;
-    }
+  if (!cupomContent) {
+    alert("Por favor, gere um cupom antes de tentar imprimir.");
+    return;
+  }
 
-    // Cria uma nova janela ou aba para imprimir
-    const printWindow = window.open('', '_blank', 'width=600,height=600');
+  const larguraCupom = tamanhoCupom === "58mm" ? "48mm" : "72mm";
 
-    printWindow.document.write(`
+  const printWindow = window.open("", "_blank", "width=600,height=600");
+
+  printWindow.document.write(`
         <html>
             <head>
-                <title>Impressão de Cupom</title>
+                <title>Impressão de Cupom - Beauty Boutique</title>
                 <style>
-                    body { font-family: Arial, sans-serif; }
-                    .cupom-content { width: 80mm; margin: 0 auto; }
-                    .footer { text-align: center; margin-top: 20px; }
+                    body { 
+                        font-family: Arial, "Courier New", monospace; 
+                        margin: 0; 
+                        padding: 0; 
+                    }
+                    .cupom-content { 
+                        width: ${larguraCupom}; 
+                        margin: 0 auto; 
+                        padding: 5px; 
+                        font-size: 14px; 
+                        line-height: 1.3; 
+                        word-wrap: break-word; 
+                    }
+                    .footer { 
+                        text-align: center; 
+                        margin-top: 10px; 
+                    }
+                    hr { 
+                        border: 0; 
+                        border-top: 1px dashed #000; 
+                    }
+                    p { 
+                        margin: 5px 0; 
+                    }
+                    strong {
+                        font-weight: bold; 
+                    }
                 </style>
             </head>
             <body>
@@ -69,13 +109,26 @@ function imprimirCupom() {
         </html>
     `);
 
-    printWindow.document.close();
+  printWindow.document.close();
 
-    // Espera o conteúdo ser carregado e imprime
-    printWindow.onload = function () {
-        printWindow.print();
-        printWindow.onafterprint = function () {
-            printWindow.close();
-        };
+  printWindow.onload = () => {
+    printWindow.print();
+    printWindow.onafterprint = () => {
+      printWindow.close();
     };
+  };
+}
+
+function limparCampos() {
+  document.getElementById("nome").value = "";
+  document.getElementById("telefone").value = "";
+  document.getElementById("endereco").value = "";
+  document.getElementById("observacao").value = "";
+  document.getElementById("data").value = "";
+  document.getElementById("statusPagamento").value = "Pago";
+  document.getElementById("metodoPagamento").value = "Cartão";
+  document.getElementById("valorTotal").value = "";
+  document.getElementById("tamanhoCupom").value = "58mm";
+  document.getElementById("cupomPreview").innerHTML = "";
+  alert("Todos os campos foram limpos!");
 }
