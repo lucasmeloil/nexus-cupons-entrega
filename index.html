@@ -6,7 +6,7 @@
     <link
       rel="icon"
       type="image/png"
-      href="../nexus-cupons-entrega-main/img/nexus-cupons-entrega.ico"
+      href="../../nexus-cupons-entrega-2/img/icon-nexus-cupon.png"
     />
     <link rel="stylesheet" href="css/styles.css" />
     <title>Nexus | Cupons de Entregas</title>
@@ -15,27 +15,52 @@
     <div class="container">
       <header>
         <!-- Notificação -->
-<div id="notificacao" class="notificacao"></div>
+        <div id="notificacao" class="notificacao"></div>
 
         <h1>Nexus | Cupons de Entregas</h1>
-        <p class="subtitle">Gerencie e imprima cupons de forma rápida e eficiente</p>
+        <p class="subtitle">
+          Gerencie e imprima cupons de forma rápida e eficiente
+        </p>
       </header>
+
+      <div style="text-align: center; margin-bottom: 20px">
+        <a href="tutorial.html" class="btn btn-info">📘 Tutorial</a>
+      </div>
+
       <form id="cupomForm">
         <div class="form-group">
           <label for="nome">Nome:</label>
-          <input type="text" id="nome" placeholder="Digite o nome do cliente" required />
+          <input
+            type="text"
+            id="nome"
+            placeholder="Digite o nome do cliente"
+            required
+          />
         </div>
         <div class="form-group">
           <label for="telefone">Telefone:</label>
-          <input type="text" id="telefone" placeholder="Digite o telefone" required />
+          <input
+            type="text"
+            id="telefone"
+            placeholder="Digite o telefone"
+            required
+          />
         </div>
         <div class="form-group">
           <label for="endereco">Endereço:</label>
-          <input type="text" id="endereco" placeholder="Digite o endereço" required />
+          <input
+            type="text"
+            id="endereco"
+            placeholder="Digite o endereço"
+            required
+          />
         </div>
         <div class="form-group">
           <label for="observacao">Observação:</label>
-          <textarea id="observacao" placeholder="Digite observações (opcional)"></textarea>
+          <textarea
+            id="observacao"
+            placeholder="Digite observações (opcional)"
+          ></textarea>
         </div>
         <div class="form-group">
           <label for="data">Data:</label>
@@ -59,7 +84,12 @@
         </div>
         <div class="form-group">
           <label for="valorTotal">Valor Total (BR$):</label>
-          <input type="number" id="valorTotal" placeholder="Digite o valor total" required />
+          <input
+            type="number"
+            id="valorTotal"
+            placeholder="Digite o valor total"
+            required
+          />
         </div>
         <div class="form-group">
           <label for="tamanhoCupom">Tamanho do Cupom:</label>
@@ -69,9 +99,19 @@
           </select>
         </div>
         <div class="buttons">
-          <button type="button" class="btn btn-primary" onclick="gerarCupom()">Gerar Cupom</button>
-          <button type="button" class="btn btn-secondary" onclick="imprimirCupom()">Imprimir Cupom</button>
-          <button type="button" class="btn btn-danger" onclick="limparCampos()">Limpar Campos</button>
+          <button type="button" class="btn btn-primary" onclick="gerarCupom()">
+            Gerar Cupom
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="imprimirCupom()"
+          >
+            Imprimir Cupom
+          </button>
+          <button type="button" class="btn btn-danger" onclick="limparCampos()">
+            Limpar Campos
+          </button>
         </div>
       </form>
 
@@ -83,8 +123,8 @@
       window.onload = function () {
         const hoje = new Date();
         const ano = hoje.getFullYear();
-        const mes = String(hoje.getMonth() + 1).padStart(2, '0');
-        const dia = String(hoje.getDate()).padStart(2, '0');
+        const mes = String(hoje.getMonth() + 1).padStart(2, "0");
+        const dia = String(hoje.getDate()).padStart(2, "0");
         document.getElementById("data").value = `${ano}-${mes}-${dia}`;
       };
     </script>

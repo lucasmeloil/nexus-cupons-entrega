@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../nexus-cupons-entrega-2/img/icon-nexus-cupon.png"
+    />
+    <title>Tutorial - Cupom de Entrega</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f7fc;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 40px 60px;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 30px;
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+
+      .step {
+        margin-bottom: 30px;
+      }
+
+      .step h2 {
+        color: #007bff;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .step p {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
+
+      .dica {
+        background: #f1f8ff;
+        border-left: 4px solid #007bff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+        font-size: 1rem;
+      }
+
+      .btn-voltar {
+        display: inline-block;
+        margin-top: 30px;
+        background-color: #007bff;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-voltar:hover {
+        background-color: #0056b3;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 20px;
+        }
+
+        header h1 {
+          font-size: 2rem;
+        }
+
+        .step h2 {
+          font-size: 1.3rem;
+        }
+
+        .step p {
+          font-size: 1rem;
+        }
+
+        .btn-voltar {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Tutorial - Gerar Cupom de Entrega</h1>
+      </header>
+
+      <div class="step">
+        <h2>📝 Passo 1: Preencha os Dados</h2>
+        <p>
+          Informe o <strong>nome do cliente</strong>, <strong>telefone</strong>,
+          <strong>endereço</strong>, <strong>data</strong>,
+          <strong>valor total</strong>, e selecione o
+          <strong>status e método de pagamento</strong>.
+        </p>
+      </div>
+
+      <div class="step">
+        <h2>🧾 Passo 2: Gere o Cupom</h2>
+        <p>
+          Clique no botão <strong>"Gerar Cupom"</strong>. O cupom será exibido
+          com os dados preenchidos logo abaixo do formulário.
+        </p>
+      </div>
+
+      <div class="step">
+        <h2>🖨️ Passo 3: Imprima o Cupom</h2>
+        <p>
+          Na seção "Tamanho do Cupom", você pode escolher entre duas opções de
+          tamanho para o seu cupom de entrega: <strong>58mm</strong> e
+          <strong>80mm</strong>.
+        </p>
+        <p>
+          A maioria dos sistemas de impressão utiliza o tamanho 80mm, sendo o
+          mais comum em impressoras térmicas. No entanto, se você tiver uma
+          impressora que utiliza o tamanho 58mm, pode selecionar essa opção para
+          um cupom maior.
+        </p>
+        <p>
+          <strong>Importante:</strong> Ao escolher o tamanho, sempre verifique a
+          compatibilidade da sua impressora. Caso tenha dúvidas, a opção 80mm é
+          a mais recomendada, pois é a mais usada em boa parte dos sistemas de
+          entrega.
+        </p>
+        <p>
+          <em>Dica:</em> Para garantir a qualidade da impressão, sempre faça um
+          teste antes de utilizar o sistema em produção!
+        </p>
+      </div>
+
+      <div class="step">
+        <h2>🧹 Passo 4: Limpar os Campos</h2>
+        <p>
+          Para começar um novo cupom, clique no botão
+          <strong>"Limpar Campos"</strong>. Isso zera tudo para novo
+          preenchimento.
+        </p>
+      </div>
+
+      <div class="dica">
+        💡 <strong>Dica:</strong> Todos os campos obrigatórios devem ser
+        preenchidos corretamente. Campos vazios impedem a geração do cupom.
+      </div>
+
+      <a href="index.html" class="btn-voltar">⬅ Voltar para o Sistema</a>
+    </div>
+  </body>
+</html>
