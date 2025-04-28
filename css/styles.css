@@ -311,3 +311,139 @@ button:active {
     font-size: 13px;
   }
 }
+
+/* Estilos Gerais */
+/* Footer Geral */
+.footer {
+  background: linear-gradient(90deg, #007bff, #0056b3); /* Degradê Azul */
+  color: #f1f1f1;
+  padding: 40px 20px 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.footer-logo {
+  flex: 1 1 200px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-img {
+  max-width: 180px;
+  height: auto;
+}
+
+/* Links */
+.footer-links {
+  flex: 2 1 300px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-links-section {
+  min-width: 140px;
+  margin-bottom: 20px;
+}
+
+.footer-links-section h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.footer-links-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links-section ul li {
+  margin-bottom: 6px;
+}
+
+.footer-links-section ul li a {
+  color: #dddddd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links-section ul li a:hover {
+  color: #ffffff;
+}
+
+/* Contato */
+.footer-contact {
+  flex: 1 1 200px;
+  margin-bottom: 20px;
+}
+
+.footer-contact h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-contact p {
+  margin: 6px 0;
+}
+
+.footer-contact a {
+  color: #dddddd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+  color: #ffffff;
+}
+
+/* Rodapé Final */
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+/* Ícones */
+.social-links i,
+.footer-contact i {
+  margin-right: 6px;
+}
+
+/* Responsividade Melhorada */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .footer-logo,
+  .footer-links,
+  .footer-contact {
+    margin-bottom: 10px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links-section {
+    margin-bottom: 10px;
+  }
+
+  .footer-contact p {
+    margin: 4px 0;
+  }
+}
