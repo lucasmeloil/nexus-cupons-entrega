@@ -1,25 +1,33 @@
-function mostrarNotificacao(mensagem, cor = '#f44336') {
-  const notificacao = document.getElementById('notificacao');
+function mostrarNotificacao(mensagem, cor = "#f44336") {
+  const notificacao = document.getElementById("notificacao");
   notificacao.textContent = mensagem;
   notificacao.style.backgroundColor = cor;
-  notificacao.classList.add('show');
+  notificacao.classList.add("show");
 
   setTimeout(() => {
-    notificacao.classList.remove('show');
+    notificacao.classList.remove("show");
   }, 3000);
 }
 
 function gerarCupom() {
-  const nome = document.getElementById("nome").value;
-  const telefone = document.getElementById("telefone").value;
-  const endereco = document.getElementById("endereco").value;
-  const observacao = document.getElementById("observacao").value;
+  const nome = document.getElementById("nome").value.trim();
+  const telefone = document.getElementById("telefone").value.trim();
+  const endereco = document.getElementById("endereco").value.trim();
+  const observacao = document.getElementById("observacao").value.trim();
   const data = document.getElementById("data").value;
   const statusPagamento = document.getElementById("statusPagamento").value;
   const metodoPagamento = document.getElementById("metodoPagamento").value;
   const valorTotal = document.getElementById("valorTotal").value;
 
-  if (!nome || !telefone || !endereco || !data || !statusPagamento || !metodoPagamento || !valorTotal) {
+  if (
+    !nome ||
+    !telefone ||
+    !endereco ||
+    !data ||
+    !statusPagamento ||
+    !metodoPagamento ||
+    !valorTotal
+  ) {
     mostrarNotificacao("Por favor, preencha todos os campos obrigatórios!");
     return;
   }
@@ -27,29 +35,37 @@ function gerarCupom() {
   const [ano, mes, dia] = data.split("-");
   const dataCorrigida = new Date(ano, mes - 1, dia);
   const dataFormatada = dataCorrigida.toLocaleDateString("pt-BR");
-  const horaAtual = new Date().toLocaleTimeString("pt-BR");
-
-  const valorTotalFormatado = Number.parseFloat(valorTotal).toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
+  const horaAtual = new Date().toLocaleTimeString("pt-BR", {
+    hour: "2-digit",
+    minute: "2-digit",
   });
+
+  const valorTotalFormatado = Number.parseFloat(valorTotal).toLocaleString(
+    "pt-BR",
+    {
+      style: "currency",
+      currency: "BRL",
+    }
+  );
 
   const cupomContent = `
     <div class="cupom-content">
-        <hr>
-        <div style="text-align: center;">
-            <p><strong>SUA ENTREGA CHEGOU</strong></p>
-        </div>
-        <p><strong>Nome:</strong> ${nome}</p>
-        <p><strong>Telefone:</strong> ${telefone}</p>
-        <p><strong>Endereço:</strong> ${endereco}</p>
-        <p><strong>Observação:</strong> ${observacao || "Nenhuma"}</p>
-        <p><strong>Status do Pagamento:</strong> ${statusPagamento}</p>
-        <p><strong>Método de Pagamento:</strong> ${metodoPagamento}</p>
-        <p><strong>Valor Total:</strong> ${valorTotalFormatado}</p>
-        <p class="small-text">Data: ${dataFormatada} - Hora: ${horaAtual}</p>
-        <hr>
-        <p class="footer" style="text-align: center;"><strong>Obrigado pela preferência!</strong></p>
+      <div style="text-align: center;">
+        <div style="height: 30px;"></div>
+        <h2 style="margin: 0;">🏍️ Sua Entrega Chegou</h2>
+        <small>${dataFormatada} - ${horaAtual}</small>
+      </div>
+      <hr>
+      <p><strong>Cliente:</strong> ${nome}</p>
+      <p><strong>Telefone:</strong> ${telefone}</p>
+      <p><strong>Endereço:</strong> ${endereco}</p>
+      <p><strong>Observação:</strong> ${observacao || "Nenhuma"}</p>
+      <p><strong>Pagamento:</strong> ${statusPagamento} - ${metodoPagamento}</p>
+      <p><strong>Valor Total:</strong> ${valorTotalFormatado}</p>
+      <hr>
+      <div style="text-align: center;">
+        <p><strong>✅ Obrigado pela preferência!</strong></p>
+      </div>
     </div>
   `;
 
@@ -73,17 +89,19 @@ function imprimirCupom() {
   printWindow.document.write(`
     <html>
       <head>
-        <title>Impressão de Cupom - Beauty Boutique</title>
+        <title>Impressão de Cupom - Nexus Entregas</title>
         <style>
-          body { font-family: Arial, "Courier New", monospace; margin: 0; padding: 0; }
-          .cupom-content { width: ${larguraCupom}; margin: 0 auto; padding: 5px; font-size: 14px; line-height: 1.3; word-wrap: break-word; }
-          .footer { text-align: center; margin-top: 10px; }
-          hr { border: 0; border-top: 1px dashed #000; }
-          p { margin: 5px 0; }
+          body { font-family: "Courier New", Courier, monospace; margin: 0; padding: 10px; }
+          .cupom-content { width: ${larguraCupom}; margin: 0 auto; font-size: 15px; line-height: 1.4; }
+          h2 { font-size: 16px; margin-bottom: 5px; }
+          p { margin: 3px 0; word-wrap: break-word; }
+          small { font-size: 13px; display: block; margin-bottom: 5px; }
+          hr { border: none; border-top: 1px dashed #000; margin: 5px 0; }
           strong { font-weight: bold; }
+          .footer { margin-top: 10px; text-align: center; font-size: 11px; }
         </style>
       </head>
-      <body>
+      <body onload="window.print(); window.onafterprint = window.close;">
         <div class="cupom-content">
           ${cupomContent}
         </div>
@@ -92,13 +110,6 @@ function imprimirCupom() {
   `);
 
   printWindow.document.close();
-
-  printWindow.onload = () => {
-    printWindow.print();
-    printWindow.onafterprint = () => {
-      printWindow.close();
-    };
-  };
 }
 
 function limparCampos() {

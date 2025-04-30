@@ -315,7 +315,7 @@ button:active {
 /* Estilos Gerais */
 /* Footer Geral */
 .footer {
-  background: linear-gradient(90deg, #007bff, #0056b3); /* Degradê Azul */
+  background: linear-gradient(90deg, #007bff, #0056b3);
   color: #f1f1f1;
   padding: 40px 20px 20px;
   font-family: 'Arial', sans-serif;
@@ -326,6 +326,7 @@ button:active {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -333,6 +334,8 @@ button:active {
 /* Logo */
 .footer-logo {
   flex: 1 1 200px;
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
@@ -343,30 +346,30 @@ button:active {
 
 /* Links */
 .footer-links {
-  flex: 2 1 300px;
+  flex: 2 1 400px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
 .footer-links-section {
   min-width: 140px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .footer-links-section h4 {
   font-size: 18px;
   margin-bottom: 10px;
-  color: #ffffff;
 }
 
 .footer-links-section ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-links-section ul li {
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .footer-links-section ul li a {
@@ -382,6 +385,9 @@ button:active {
 /* Contato */
 .footer-contact {
   flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-bottom: 20px;
 }
 
@@ -391,7 +397,7 @@ button:active {
 }
 
 .footer-contact p {
-  margin: 6px 0;
+  margin: 5px 0;
 }
 
 .footer-contact a {
@@ -404,6 +410,12 @@ button:active {
   color: #ffffff;
 }
 
+/* Ícones */
+.social-links i,
+.footer-contact i {
+  margin-right: 6px;
+}
+
 /* Rodapé Final */
 .footer-bottom {
   text-align: center;
@@ -413,37 +425,77 @@ button:active {
   margin-top: 30px;
 }
 
-/* Ícones */
-.social-links i,
-.footer-contact i {
-  margin-right: 6px;
-}
-
-/* Responsividade Melhorada */
+/* RESPONSIVO COMPACTADO */
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 10px 0;
+    gap: 10px; /* MENOR espaço entre blocos */
+    padding: 20px 0;
   }
 
-  .footer-logo,
-  .footer-links,
-  .footer-contact {
+  .footer-logo {
     margin-bottom: 10px;
   }
 
   .footer-links {
     flex-direction: column;
     align-items: center;
+    gap: 5px;
   }
 
   .footer-links-section {
+    margin-bottom: 5px;
+  }
+
+  .footer-links-section h4 {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  .footer-links-section ul li {
+    margin-bottom: 4px;
+  }
+
+  .footer-contact {
+    align-items: center;
+    text-align: center;
     margin-bottom: 10px;
   }
 
+  .footer-contact h4 {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
   .footer-contact p {
-    margin: 4px 0;
+    margin: 2px 0;
+    font-size: 14px;
+  }
+
+  .footer-contact a {
+    font-size: 14px;
+  }
+
+  .footer-bottom {
+    font-size: 13px;
+    margin-top: 20px;
+    padding-top: 15px;
+  }
+}
+
+/* Ainda mais compacto para celulares muito pequenos */
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px 10px 15px;
+  }
+
+  .footer-container {
+    gap: 5px;
+  }
+
+  .footer-logo-img {
+    max-width: 140px;
   }
 }
